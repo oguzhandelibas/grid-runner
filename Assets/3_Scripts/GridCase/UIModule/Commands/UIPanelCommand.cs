@@ -36,7 +36,7 @@ namespace GridRunner.Grid.UIModule.Commands
         {
             var panelCount = Enum.GetNames(typeof(PanelTypes)).Length;
             for (int i = 0; i < panelCount; i++)
-                _panels[i].SetActive(false);
+                _panels[i]?.SetActive(false);
         }
     }
 }

@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using System;
 using System.Collections.Generic;
 using GridRunner.PoolModule.Enums;
+using UnityEngine;
 
 namespace GridRunner.PoolModule.Extentions
 {
@@ -15,8 +17,11 @@ namespace GridRunner.PoolModule.Extentions
 
         public void AddObjectPool<T>(Func<T> factoryMethod, Action<T> turnOnCallback, Action<T> turnOffCallback, PoolType poolName, int initialStock = 0, bool isDynamic = true)
         {
+            //UnityEngine.Debug.Log(poolName);
             if (!_pools.ContainsKey(poolName))
                 _pools.Add(poolName, new ObjectPool<T>(factoryMethod, turnOnCallback, turnOffCallback, initialStock, isDynamic));
+
+
         }
 
         public ObjectPool<T> GetObjectPool<T>(PoolType poolName)

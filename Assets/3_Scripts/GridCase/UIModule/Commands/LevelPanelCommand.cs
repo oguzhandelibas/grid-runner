@@ -10,6 +10,7 @@ namespace GridRunner.Grid.UIModule.Commands
         #region Private Variables
 
         private readonly TextMeshProUGUI _gridScoreText;
+        private int matchCount = 0;
 
         #endregion
 
@@ -22,7 +23,8 @@ namespace GridRunner.Grid.UIModule.Commands
 
         public void SetGridScoreText(int gemValue)
         {
-            _gridScoreText.text = gemValue.ToString();
+            matchCount += gemValue;
+            _gridScoreText.text = "MATCH COUNT \n " + matchCount.ToString();
         }
     }
 }

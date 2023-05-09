@@ -5,7 +5,9 @@ namespace GridRunner.PoolModule.Interfaces
 {
     public interface IReleasePoolObject
     {
+        void ReleaseObject(GameObject obj);
         void ReleaseObject(GameObject obj, PoolType poolType);
+
 
     }
 }

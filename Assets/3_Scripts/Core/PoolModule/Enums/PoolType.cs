@@ -2,6 +2,10 @@ namespace GridRunner.PoolModule.Enums
 {
     public enum PoolType
     {
+        GridObject,
+        //GridCrownObject,
+        GridClickParticle,
+        GridMatchParticle,
         MovementStackCube,
         CuttedCubes,
         StarParticle,
@@ -9,10 +13,6 @@ namespace GridRunner.PoolModule.Enums
         GemParticle,
         CoinObject,
         GemObject,
-        StarObject,
-        GridObject,
-        GridCrownObject,
-        GridClickParticle,
-        GridMatchParticle,
+        StarObject
     }
 }

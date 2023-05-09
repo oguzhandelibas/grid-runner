@@ -26,6 +26,7 @@ namespace GridRunner
                     {
                         GameObject obj = new GameObject();
                         obj.name = typeof(T).Name;
+                        obj.transform.SetParent(GameObject.Find("Signals").transform);
                         s_Instance = obj.AddComponent<T>();
                     }
                 }

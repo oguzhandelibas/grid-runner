@@ -13,7 +13,7 @@ namespace GridRunner.PoolModule
         #region Self Variables
 
         #region Private Variables
-        private SerializedDictionary<PoolType, PoolData> _data;
+        private CD_Pool _data;
         private int _listCountCache;
         private ObjectPoolExtention _extention;
         #endregion
@@ -67,14 +67,15 @@ namespace GridRunner.PoolModule
             _extention.ReturnObject<GameObject>(obj, poolType);
         }
 
-        private SerializedDictionary<PoolType, PoolData> GetData() => Resources.Load<CD_Pool>("Datas/CD_Pool").PoolDataDic;
+        //private SerializedDictionary<PoolType, PoolData> GetData() => Resources.Load<CD_Pool>("Datas/CD_Pool").PoolDataDic;
+        private CD_Pool GetData() => Resources.Load<CD_Pool>("Datas/CD_Pool");
 
         private void InitializePools()
         {
             for (int index = 0; index < _data.Count; index++)
             {
                 _listCountCache = index;
-                InitPool(((PoolType)index), _data[((PoolType)index)].initalAmount, _data[((PoolType)index)].isDynamic);
+                InitPool(((PoolType)index), _data.poolDatas[index].initalAmount, _data.poolDatas[index].isDynamic);
             }
         }
 
@@ -97,7 +98,7 @@ namespace GridRunner.PoolModule
 
         public GameObject FactoryMethod()
         {
-            var go = Instantiate(_data[((PoolType)_listCountCache)].ObjectType, this.transform);
+            var go = Instantiate(_data.poolDatas[_listCountCache].ObjectType, this.transform);
             return go;
         }
     }

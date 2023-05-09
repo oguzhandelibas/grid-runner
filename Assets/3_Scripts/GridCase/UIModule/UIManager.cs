@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 using GridRunner.Grid.UIModule.Enums;
-//using GridRunner.Grid.CoreGameModule.Signals;
 using GridRunner.Grid.UIModule.Signals;
 using System.Collections.Generic;
 using GridRunner.Grid.UIModule.Commands;
-//using GridRunner.Grid.GridModule.Signals;
+using GridRunner.Grid.CoreGameModule.Signals;
+using GridRunner.Grid.GridModule.Signals;
 
 
 namespace GridRunner.Grid.UIModule
@@ -17,12 +18,12 @@ namespace GridRunner.Grid.UIModule
 
         #region Serialized Variables
 
-        [SerializeField]
-        private List<GameObject> panels;
-        [SerializeField]
-        private TextMeshProUGUI gridScoreText;
-        [SerializeField]
-        private TMP_InputField gridInput;
+        [SerializeField] private List<GameObject> panels;
+        [SerializeField] private TextMeshProUGUI gridScoreText;
+        [SerializeField] private TextMeshProUGUI sliderValue;
+        [SerializeField] private Slider gridSizeSlider;
+
+
         #endregion
 
         #region Private Variables
@@ -52,9 +53,9 @@ namespace GridRunner.Grid.UIModule
             UISignals.Instance.onOpenPanel += OnOpenPanel;
             UISignals.Instance.onClosePanel += OnClosePanel;
             UISignals.Instance.onUpdateGridScoreText += OnUpdateGridScore;
-            /*
-                        CoreGameSignals.Instance.onPlay += OnPlay;
-                        CoreGameSignals.Instance.onReset += OnReset;*/
+
+            CoreGameSignals.Instance.onPlay += OnPlay;
+            CoreGameSignals.Instance.onReset += OnReset;
 
         }
 
@@ -63,9 +64,9 @@ namespace GridRunner.Grid.UIModule
             UISignals.Instance.onOpenPanel -= OnOpenPanel;
             UISignals.Instance.onClosePanel -= OnClosePanel;
             UISignals.Instance.onUpdateGridScoreText -= OnUpdateGridScore;
-            /*
-                        CoreGameSignals.Instance.onPlay -= OnPlay;
-                        CoreGameSignals.Instance.onReset -= OnReset;*/
+
+            CoreGameSignals.Instance.onPlay -= OnPlay;
+            CoreGameSignals.Instance.onReset -= OnReset;
         }
 
         private void OnDisable()
@@ -74,6 +75,7 @@ namespace GridRunner.Grid.UIModule
         }
 
         #endregion
+
 
         private void OnOpenPanel(PanelTypes panelParam)
         {
@@ -103,28 +105,40 @@ namespace GridRunner.Grid.UIModule
             _uiPanelCommand.OpenPanel(PanelTypes.GamePanel);
         }
 
-        public void PlayButton()
-        {
-            //CoreGameSignals.Instance.onPlay?.Invoke();
-        }
-
-        public void CreateButton()
-        {
-            var value = Int32.Parse(gridInput.text);
-            //GridSignals.Instance.onCreateGrid?.Invoke(value);
-        }
-
-        public void RestartButton()
-        {
-            _uiPanelCommand.CloseAllPanel();
-            _uiPanelCommand.OpenPanel(PanelTypes.GamePanel);
-            //CoreGameSignals.Instance.onPlay?.Invoke();
-        }
-
         private void OnUpdateGridScore(int coinValue)
         {
             _levelPanelCommand.SetGridScoreText(coinValue);
         }
+
+        #region UI Interact
+        public void _UpdateSliderValueOnText()
+        {
+            sliderValue.text = gridSizeSlider.value.ToString();
+        }
+
+        public void _PlayButton()
+        {
+            CoreGameSignals.Instance.onPlay?.Invoke();
+        }
+
+        public void _CreatGridButton()
+        {
+            sliderValue.text = gridSizeSlider.value.ToString();
+            var value = (int)gridSizeSlider.value;
+            GridSignals.Instance.onCreateGrid?.Invoke(value);
+        }
+
+        public void _RestartButton()
+        {
+            _uiPanelCommand.CloseAllPanel();
+            _uiPanelCommand.OpenPanel(PanelTypes.GamePanel);
+            CoreGameSignals.Instance.onPlay?.Invoke();
+        }
+        #endregion
+
+
+
+
 
     }
 }
