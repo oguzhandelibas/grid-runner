@@ -26,7 +26,7 @@ namespace GridRunner
                     break;
                 case Case.Runner:
                     game = Instantiate(m_RunnerGame);
-                    game.name = "--->GRID GAME";
+                    game.name = "--->RUNNER GAME";
                     break;
             }
 
