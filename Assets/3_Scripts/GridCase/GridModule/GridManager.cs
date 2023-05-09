@@ -94,7 +94,9 @@ namespace GridRunner.Grid.GridModule
                 _gridPositions = new Vector3(modX * GridData.GridOffsets.x + position.x, position.y,
                     modZ * GridData.GridOffsets.y + position.z);
 
+                if (gridInputSize == 15) Debug.Log("ModX, DivideZ: " + modX + " ve " + divideZ);
                 var obj = GetObject(PoolType.GridObject);
+
                 obj.transform.SetParent(this.transform);
                 obj.transform.position = _gridPositions;
 

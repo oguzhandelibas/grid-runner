@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 61994613}
   - component: {fileID: 61994612}
   - component: {fileID: 61994611}
-  - component: {fileID: 61994610}
   - component: {fileID: 61994609}
   m_Layer: 0
   m_Name: Manager
@@ -71,7 +70,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7269053035050157341}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &61994613
 MonoBehaviour:
@@ -115,22 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916f1d5461de4cf46b9c013e89d98c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &61994610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61994607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6a763d32b4e3e24297a118b84c53da3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GridData:
-    GridSize: 2
-    GridOffsets: {x: 1, y: 1}
-  gridPivotTarget: {fileID: 667954129}
 --- !u!114 &61994609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +326,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61994612}
         m_TargetAssemblyTypeName: GridRunner.Grid.UIModule.UIManager, Assembly-CSharp
-        m_MethodName: _CreatGrideButton
+        m_MethodName: _CreatGridButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -654,7 +637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7269053035050157341}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228479781
 GameObject:
@@ -936,7 +919,7 @@ MonoBehaviour:
   m_MinValue: 2
   m_MaxValue: 15
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 14
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1196,7 +1179,7 @@ RectTransform:
   m_Children:
   - {fileID: 1467604602}
   m_Father: {fileID: 7269053035050157341}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1293,6 +1276,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2583037752450588433}
+  - {fileID: 7865511931074424979}
   - {fileID: 61994608}
   - {fileID: 2076625150}
   - {fileID: 667954129}
@@ -1330,3 +1314,51 @@ Transform:
   m_Father: {fileID: 7269053035050157341}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3696259092348557408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7865511931074424979}
+  - component: {fileID: 3619678607440325199}
+  m_Layer: 0
+  m_Name: GridManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7865511931074424979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696259092348557408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7269053035050157341}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3619678607440325199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696259092348557408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a763d32b4e3e24297a118b84c53da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridData:
+    GridSize: 2
+    GridOffsets: {x: 1, y: 1}
+  gridPivotTarget: {fileID: 667954129}
