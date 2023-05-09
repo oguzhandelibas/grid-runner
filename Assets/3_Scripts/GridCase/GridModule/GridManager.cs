@@ -105,7 +105,7 @@ namespace GridRunner.Grid.GridModule
 
             }
 
-            //FoundAllNeighbors(gridCount);
+            FoundAllNeighbors(gridCount);
         }
 
         private void FoundAllNeighbors(int gridCount)
