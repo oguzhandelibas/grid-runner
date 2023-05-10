@@ -136,6 +136,11 @@ namespace GridRunner.Grid.UIModule
             _uiPanelCommand.OpenPanel(PanelTypes.GamePanel);
             CoreGameSignals.Instance.onPlay?.Invoke();
         }
+
+        public void _TurnBackHomeButton()
+        {
+            BootLoader.Instance.ActivateMainMenu();
+        }
         #endregion
 
 

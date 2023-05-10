@@ -178,6 +178,11 @@ namespace GridRunner.UIModules.Managers
             LevelSignals.Instance.onRestartLevel?.Invoke();
             CoreGameSignals.Instance.onPlay?.Invoke();
         }
+
+        public void _TurnBackHomeButton()
+        {
+            BootLoader.Instance.ActivateMainMenu();
+        }
         #endregion
     }
 }

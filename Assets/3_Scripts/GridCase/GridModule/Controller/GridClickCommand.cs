@@ -28,11 +28,6 @@ public class GridClickCommand : IGetPoolObject, IReleasePoolObject
             {
                 if (gridSquareManager.AvaibleType != AvaibleType.Lock)
                 {
-                    /*var obj = GetObject(PoolType.GridCrownObject);
-                    obj.transform.position = new Vector3(gridSquareManager.transform.position.x,
-                        gridSquareManager.transform.position.y + 0.2f,
-                        gridSquareManager.transform.position.z); ;
-                    obj.transform.SetParent(gridSquareManager.transform);*/
                     gridSquareManager.guru.SetActive(true);
                     gridSquareManager.AvaibleType = AvaibleType.Lock;
                     _neighbors.Clear();

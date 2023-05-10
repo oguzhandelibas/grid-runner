@@ -5,26 +5,51 @@ using UnityEngine;
 namespace GridRunner
 {
     public enum Case { Grid, Runner }
-    public class BootLoader : MonoBehaviour
+    public class BootLoader : AbstractSingleton<BootLoader>
     {
-        public Case Case = Case.Grid;
+        private GameObject mainMenu;
+        private Case Case = Case.Grid;
+        private GameObject game;
 
-        void Start()
+        private void Start()
         {
-            GameObject game;
+            mainMenu = transform.GetChild(0).gameObject;
+            /*
             switch (Case)
             {
                 case Case.Grid:
-                    game = Object.Instantiate(Resources.Load<GameObject>($"Levels/GridGame"));
-                    game.name = "--->GRID GAME";
+                    Object.Instantiate(Resources.Load<GameObject>($"Levels/GridGame")).name = "--->GRID GAME";
                     break;
                 case Case.Runner:
-                    game = Object.Instantiate(Resources.Load<GameObject>($"Levels/RunnerGame"));
-                    game.name = "--->RUNNER GAME";
+                    Object.Instantiate(Resources.Load<GameObject>($"Levels/RunnerGame")).name = "--->RUNNER GAME";
                     break;
             }
+            */
+        }
+        private void DeactivateMenu(GameObject gameObj)
+        {
+            game = gameObj;
+            mainMenu.SetActive(false);
+        }
 
+        public void ActivateMainMenu()
+        {
+            mainMenu.SetActive(true);
+            Destroy(game);
+        }
 
+        public void _CreateGridGame()
+        {
+            GameObject gameObj = Object.Instantiate(Resources.Load<GameObject>($"Levels/GridGame"));
+            gameObj.name = "--->GRID GAME";
+            DeactivateMenu(gameObj);
+        }
+
+        public void _CreateRunnerGame()
+        {
+            GameObject gameObj = Object.Instantiate(Resources.Load<GameObject>($"Levels/RunnerGame"));
+            gameObj.name = "--->RUNNER GAME";
+            DeactivateMenu(gameObj);
         }
     }
 }
