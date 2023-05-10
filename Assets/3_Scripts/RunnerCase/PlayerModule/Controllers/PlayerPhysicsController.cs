@@ -6,7 +6,7 @@ using UnityEngine;
 using GridRunner.PoolModule.Interfaces;
 using GridRunner.PoolModule.Signals;
 using GridRunner.PoolModule.Enums;
-//using DG.Tweening;
+using DG.Tweening;
 
 namespace GridRunner.Runner.Controllers
 {
@@ -50,19 +50,19 @@ namespace GridRunner.Runner.Controllers
                         CoreGameSignals.Instance.onUpdateCoinScore?.Invoke(1);
                         var coinParticle = GetObject(PoolType.CoinParticle);
                         coinParticle.transform.position = other.transform.position;
-                        //DOVirtual.DelayedCall(0.5f, () => ReleaseObject(coinParticle, PoolType.CoinParticle));
+                        DOVirtual.DelayedCall(0.5f, () => ReleaseObject(coinParticle, PoolType.CoinParticle));
                         break;
                     case CollectableType.Gem:
                         CoreGameSignals.Instance.onUpdateGemScore?.Invoke(1);
                         var gemParticle = GetObject(PoolType.GemParticle);
                         gemParticle.transform.position = other.transform.position;
-                        //DOVirtual.DelayedCall(0.5f, () => ReleaseObject(gemParticle, PoolType.GemParticle));
+                        DOVirtual.DelayedCall(0.5f, () => ReleaseObject(gemParticle, PoolType.GemParticle));
                         break;
                     case CollectableType.Star:
                         CoreGameSignals.Instance.onUpdateStarScore?.Invoke(1);
                         var starParticle = GetObject(PoolType.StarParticle);
                         starParticle.transform.position = other.transform.position;
-                        //DOVirtual.DelayedCall(0.5f, () => ReleaseObject(starParticle, PoolType.StarParticle));
+                        DOVirtual.DelayedCall(0.5f, () => ReleaseObject(starParticle, PoolType.StarParticle));
                         break;
                 }
                 other.gameObject.SetActive(false);

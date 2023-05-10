@@ -62,7 +62,6 @@ namespace GridRunner.AudioModule
 
         private void OnPlaySound(SoundType arg0, float pitchValue)
         {
-            Debug.Log("çakllll");
             Sources[(int)arg0].Play();
             Sources[(int)arg0].pitch = pitchValue;
         }
