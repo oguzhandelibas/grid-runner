@@ -168,11 +168,6 @@ namespace GridRunner.Runner.CutModule
         {
             return _stackCubes[_stackCubes.Count - 1].transform.position.x - _stackCubes[_stackCubes.Count - 2].transform.position.x;
         }
-
-        public void ReleaseObject(GameObject obj)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
 }

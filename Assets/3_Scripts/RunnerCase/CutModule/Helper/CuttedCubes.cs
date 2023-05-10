@@ -12,11 +12,6 @@ public class CuttedCubes : MonoBehaviour, IReleasePoolObject
         PoolSignals.Instance.onReleaseObjectFromPool(obj, poolType);
     }
 
-    public void ReleaseObject(GameObject obj)
-    {
-        throw new System.NotImplementedException();
-    }
-
     private void OnEnable()
     {
         DOVirtual.DelayedCall(_time, () => ReleaseObject(this.gameObject, PoolType.CuttedCubes));

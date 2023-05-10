@@ -158,11 +158,6 @@ namespace GridRunner.Grid.GridModule
         {
             PoolSignals.Instance.onReleaseObjectFromPool?.Invoke(obj, poolType);
         }
-
-        public void ReleaseObject(GameObject obj)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
 

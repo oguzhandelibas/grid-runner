@@ -25,11 +25,6 @@ namespace GridRunner.Runner.Controllers
             PoolSignals.Instance.onReleaseObjectFromPool(obj, poolType);
         }
 
-        public void ReleaseObject(GameObject obj)
-        {
-            throw new System.NotImplementedException();
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("FallBox"))

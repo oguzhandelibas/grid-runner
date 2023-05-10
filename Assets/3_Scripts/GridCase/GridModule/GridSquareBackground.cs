@@ -4,7 +4,7 @@ using GridRunner.PoolModule.Enums;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GridSquareBackground : MonoBehaviour, IReleasePoolObject
+public class GridSquareBackground : MonoBehaviour
 {
     public AvaibleType AvaibleType = AvaibleType.Unlock;
     public GameObject guru;
@@ -27,13 +27,6 @@ public class GridSquareBackground : MonoBehaviour, IReleasePoolObject
     public void ReleaseObject(GameObject obj)
     {
         guru.SetActive(false);
-        //PoolSignals.Instance.onReleaseObjectFromPool(obj, poolType);
-    }
-
-    public void ReleaseObject(GameObject obj, PoolType poolType)
-    {
-        guru.SetActive(false);
-        PoolSignals.Instance.onReleaseObjectFromPool(obj, poolType);
     }
 }
 

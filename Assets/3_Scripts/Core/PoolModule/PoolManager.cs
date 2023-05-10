@@ -67,7 +67,6 @@ namespace GridRunner.PoolModule
             _extention.ReturnObject<GameObject>(obj, poolType);
         }
 
-        //private SerializedDictionary<PoolType, PoolData> GetData() => Resources.Load<CD_Pool>("Datas/CD_Pool").PoolDataDic;
         private CD_Pool GetData() => Resources.Load<CD_Pool>("Datas/CD_Pool");
 
         private void InitializePools()
