@@ -14,7 +14,6 @@ public class LevelLoaderCommand
 
     public LevelLoaderCommand(ref GameObject levelHolder)
     {
-        Debug.Log("LevelLoaderCommand()");
         _levelHolder = levelHolder;
     }
 

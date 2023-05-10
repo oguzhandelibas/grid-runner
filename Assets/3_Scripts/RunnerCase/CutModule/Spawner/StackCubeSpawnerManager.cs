@@ -46,6 +46,11 @@ namespace GridRunner.Runner.CutModule
         #endregion
 
         #endregion
+        private void Awake()
+        {
+            Init();
+        }
+
         private void Init()
         {
             _stackCubeData = GetData().StackCubeData;
@@ -53,10 +58,7 @@ namespace GridRunner.Runner.CutModule
             _maxCubeCount = GetData().StackCountsEachLevel[LevelSignals.Instance.onGetLevel.Invoke()];
             calculateFinishCommand = new CalculateFinishCommand(finishObject);
         }
-        private void Awake()
-        {
-            Init();
-        }
+
         private CD_StackCube GetData()
         {
             return Resources.Load<CD_StackCube>("Datas/CD_StackCube");

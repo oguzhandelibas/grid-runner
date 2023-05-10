@@ -49,7 +49,6 @@ namespace GridRunner.Runner.CoreGameModule
             switch (gameStates)
             {
                 case GameStates.Default:
-                    Debug.Log("GameManager Default Initialization Level");
                     LevelSignals.Instance.onLevelInitialize?.Invoke();
                     break;
                 case GameStates.RunnerGame:

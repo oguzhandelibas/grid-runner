@@ -2,7 +2,7 @@ using UnityEngine;
 using GridRunner.PoolModule.Signals;
 using GridRunner.PoolModule.Interfaces;
 using GridRunner.PoolModule.Enums;
-//using DG.Tweening;
+using DG.Tweening;
 
 public class CuttedCubes : MonoBehaviour, IReleasePoolObject
 {
@@ -19,6 +19,6 @@ public class CuttedCubes : MonoBehaviour, IReleasePoolObject
 
     private void OnEnable()
     {
-        //DOVirtual.DelayedCall(_time, ()=>  ReleaseObject(this.gameObject, PoolType.CuttedCubes));
+        DOVirtual.DelayedCall(_time, () => ReleaseObject(this.gameObject, PoolType.CuttedCubes));
     }
 }

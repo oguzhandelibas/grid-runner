@@ -7,13 +7,7 @@ namespace GridRunner
     public enum Case { Grid, Runner }
     public class BootLoader : MonoBehaviour
     {
-        [Header("Choose Game Type:")]
         public Case Case = Case.Grid;
-
-        [Header("Game Types:")]
-        [SerializeField] GameObject m_GridGame;
-        [SerializeField] GameObject m_RunnerGame;
-
 
         void Start()
         {
@@ -22,12 +16,10 @@ namespace GridRunner
             {
                 case Case.Grid:
                     game = Object.Instantiate(Resources.Load<GameObject>($"Levels/GridGame"));
-                    //Instantiate(m_GridGame);
                     game.name = "--->GRID GAME";
                     break;
                 case Case.Runner:
                     game = Object.Instantiate(Resources.Load<GameObject>($"Levels/RunnerGame"));
-                    //game = Instantiate(m_RunnerGame);
                     game.name = "--->RUNNER GAME";
                     break;
             }

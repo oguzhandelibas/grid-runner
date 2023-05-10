@@ -37,4 +37,4 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 98c35d4a80b89d84db88e2baf4b6d439, type: 2}
     - {fileID: 2100000, guid: d78110e4f22ca8345a65ceb8f0a930c5, type: 2}
     - {fileID: 2100000, guid: 049690d0a0b029a4b939b5c4754c6ff8, type: 2}
-  StackCountsEachLevel: 05000000
+  StackCountsEachLevel: 0300000005000000060000000700000008000000090000000a000000
