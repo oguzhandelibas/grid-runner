@@ -5,5 +5,6 @@ namespace GridRunner.AudioModule.Enums
     {
         Correct,
         Incorrect,
+        Cut,
     }
 }

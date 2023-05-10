@@ -24,7 +24,6 @@ namespace GridRunner.Runner.UIModules.Controllers
 
         public void OpenPanel(PanelTypes panelParam)
         {
-            Debug.Log("Open Panel: " + panelParam);
             _panels[(int)panelParam].SetActive(true);
         }
 

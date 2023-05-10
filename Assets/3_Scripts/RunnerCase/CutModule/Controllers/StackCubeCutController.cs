@@ -36,7 +36,7 @@ namespace GridRunner.Runner.CutModule.Controllers
 
         private void CheckStackCube(float edge, float stackCubeXSize, float stackCubeXPosition, float cuttedCubeXPosition, float cuttedCubeSize, List<GameObject> _stackCubes, float direction)
         {
-            if (Mathf.Abs(edge) <= 0.1f)
+            if (Mathf.Abs(edge) <= 0.2f)
             {
                 comboValue++;
                 AudioSignals.Instance.onPlaySound(SoundType.Correct, pitchValue);
@@ -50,6 +50,7 @@ namespace GridRunner.Runner.CutModule.Controllers
                 {
                     AudioSignals.Instance.onPlaySound(SoundType.Incorrect, pitchValue);
                 }
+                else AudioSignals.Instance.onPlaySound(SoundType.Cut, pitchValue);
                 comboValue = 0;
                 if (stackCubeXSize > 0)
                 {

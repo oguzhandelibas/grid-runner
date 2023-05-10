@@ -15,13 +15,16 @@ MonoBehaviour:
   SoundData:
   - SoundType: 0
     SoundClip: {fileID: 8300000, guid: d596395ced193fe42b7bcc83bdd6b3ca, type: 3}
-    Volume: 0
-    Pitch: 0
-    AudioSource: {fileID: 8260759144062831124, guid: cae860ab8029f7044aaba633f98deb00,
-      type: 3}
+    Volume: 0.4
+    Pitch: 1
+    AudioSource: {fileID: 0}
   - SoundType: 1
     SoundClip: {fileID: 8300000, guid: acbe94409e3b8ad46b888d6da0d5789b, type: 3}
-    Volume: 0
-    Pitch: 0
-    AudioSource: {fileID: 8260759144062831124, guid: cae860ab8029f7044aaba633f98deb00,
-      type: 3}
+    Volume: 0.5
+    Pitch: 1
+    AudioSource: {fileID: 0}
+  - SoundType: 2
+    SoundClip: {fileID: 8300000, guid: 790d676bbd488c64a8e3c4ba57c8cbca, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    AudioSource: {fileID: 0}

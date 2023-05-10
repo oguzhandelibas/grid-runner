@@ -124,7 +124,6 @@ namespace GridRunner.UIModules.Managers
         private void OnLevelFailed()
         {
             _uiPanelController.CloseAllPanel();
-            Debug.Log("UI -> Level Failed");
             //_uiPanelController.OpenPanel(PanelTypes.FailedPanel);
             Debug.Log(_uiPanelController);
             DOVirtual.DelayedCall(0.75f, () => _uiPanelController.OpenPanel(PanelTypes.FailedPanel));

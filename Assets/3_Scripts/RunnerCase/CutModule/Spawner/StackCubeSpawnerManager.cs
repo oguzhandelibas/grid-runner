@@ -94,7 +94,7 @@ namespace GridRunner.Runner.CutModule
             UnsbscribeEvents();
         }
         #endregion
-        //FİNİSHDEN SONRA START CUBE FINISH IN SONUNA GELİYOR, SAKİN OLSUN
+
         private void OnClick()
         {
             if (_isFailed)
