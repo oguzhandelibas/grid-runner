@@ -112,7 +112,8 @@ namespace GridRunner.Runner
         public void StopMovement()
         {
             _playerMovementController.StopPlayerMovement();
-            if (playerRigidbody.velocity.y < 0f)
+
+            if (playerRigidbody.velocity.y < -2f)
             {
                 _playerAnimationCommand.ChangePlayerAnimation(PlayerAnimationType.Fall);
                 return;

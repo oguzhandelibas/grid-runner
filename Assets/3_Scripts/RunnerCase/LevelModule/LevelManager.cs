@@ -67,11 +67,12 @@ namespace GridRunner.Runner.LevelModule
             }*/
             Load(_uniqeID);
         }
+
         private void Init()
         {
+            Debug.Log("Init()s");
             _levelLoader = new LevelLoaderCommand(ref levelHolder);
             _clearActiveLevel = new ClearActiveLevelCommand(ref levelHolder);
-
         }
 
         #region Event Subscription
@@ -150,8 +151,9 @@ namespace GridRunner.Runner.LevelModule
 
         private void OnRestartLevel()
         {
+            Debug.Log("Restart Level");
             LevelSignals.Instance.onClearActiveLevel?.Invoke();
-            //CoreGameSignals.Instance.onReset?.Invoke();
+            CoreGameSignals.Instance.onReset?.Invoke();
             LevelSignals.Instance.onLevelInitialize?.Invoke();
         }
         public void Load(int uniqeID)

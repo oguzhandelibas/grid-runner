@@ -21,11 +21,13 @@ namespace GridRunner
             switch (Case)
             {
                 case Case.Grid:
-                    game = Instantiate(m_GridGame);
+                    game = Object.Instantiate(Resources.Load<GameObject>($"Levels/GridGame"));
+                    //Instantiate(m_GridGame);
                     game.name = "--->GRID GAME";
                     break;
                 case Case.Runner:
-                    game = Instantiate(m_RunnerGame);
+                    game = Object.Instantiate(Resources.Load<GameObject>($"Levels/RunnerGame"));
+                    //game = Instantiate(m_RunnerGame);
                     game.name = "--->RUNNER GAME";
                     break;
             }

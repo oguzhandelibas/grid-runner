@@ -14,12 +14,13 @@ public class LevelLoaderCommand
 
     public LevelLoaderCommand(ref GameObject levelHolder)
     {
+        Debug.Log("LevelLoaderCommand()");
         _levelHolder = levelHolder;
     }
 
     public void Execute()
     {
-        Object.Instantiate(Resources.Load<GameObject>($"Prefabs/LevelPrefabs/Level {1}"),
+        Object.Instantiate(Resources.Load<GameObject>($"Levels/RunnerGameLevel {1}"),
             _levelHolder.transform);
     }
 }
