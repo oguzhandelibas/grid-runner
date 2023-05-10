@@ -281,121 +281,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1481553474}
     m_Modifications:
-    - target: {fileID: 7051054542651891255, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_Name
-      value: GameTypes
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867292, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867292, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867292, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867292, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867295, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867295, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7051054542830867295, guid: f1129e641ceff9045addc903fd78776b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1481553473}
-    - target: {fileID: 7051054542830867295, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867295, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: _CreateGridGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867295, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GridRunner.BootLoader, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054542830867295, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541505, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541505, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7051054543373541505, guid: f1129e641ceff9045addc903fd78776b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1481553473}
-    - target: {fileID: 7051054543373541505, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541505, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: _CreateRunnerGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541505, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GridRunner.BootLoader, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541505, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541511, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541511, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541511, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543373541511, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7051054543617337881, guid: f1129e641ceff9045addc903fd78776b,
         type: 3}
       propertyPath: m_RootOrder
@@ -455,16 +350,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543617337886, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051054543743310411, guid: f1129e641ceff9045addc903fd78776b,
-        type: 3}
-      propertyPath: orthographic
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1129e641ceff9045addc903fd78776b, type: 3}
