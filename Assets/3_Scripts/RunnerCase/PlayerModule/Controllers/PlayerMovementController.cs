@@ -9,9 +9,12 @@ namespace GridRunner.Runner.Commands
         #region Private Variables
 
         private bool _readyToMove = false;
-        private float otherSpeed = 0;
-        private float direction;
-        private const float Xspeed = 35f;
+        private float _otherSpeed = 0f;
+        private float _direction;
+        private const float _xSpeed = 35f;
+        private const float _maxYVelocity = 0.25f;
+        private const float _minYVelocity = -9.81f;
+        private const float _rotationSpeed = 35f;
 
         #endregion
 
@@ -30,40 +33,29 @@ namespace GridRunner.Runner.Commands
         {
             if (_readyToMove)
             {
+                if (!_readyToMove) return;
 
                 var posX = target.position.x - rigidbody.position.x;
-                direction = posX < 0 ? -1f : 1f;
+                _direction = posX < 0 ? -1f : 1f;
                 if (Mathf.Abs(posX) >= 0.05f)
-                    otherSpeed = Mathf.Lerp(otherSpeed, Xspeed, 0.7f);
+                    _otherSpeed = Mathf.Lerp(_otherSpeed, _xSpeed, 0.7f);
                 else
-                    otherSpeed = 0;
+                    _otherSpeed = 0f;
 
                 var velocity = rigidbody.velocity;
-                velocity = new Vector3(Time.fixedDeltaTime * otherSpeed * direction, Mathf.Clamp(velocity.y,
-                        -9.81f,
-                        0.25f), Time.fixedDeltaTime * speed);
+                velocity = new Vector3(Time.fixedDeltaTime * _otherSpeed * _direction, Mathf.Clamp(velocity.y, _minYVelocity, _maxYVelocity), Time.fixedDeltaTime * speed);
                 rigidbody.velocity = velocity;
 
                 RotatePlayer(target, rigidbody);
-
-            }
-            else if (rigidbody.velocity != Vector3.zero)
-            {
-                rigidbody.velocity = new Vector3(0,
-                    Mathf.Clamp(rigidbody.velocity.y,
-                    -9.81f,
-                    0.25f),
-                    0);
             }
         }
         private void RotatePlayer(Transform target, Rigidbody rb)
         {
-            if (target)
-            {
-                Vector3 movementDirection = new Vector3(target.position.x, 0, target.position.z);
-                Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up * 3f);
-                rb.rotation = Quaternion.RotateTowards(rb.rotation, toRotation, 30);
-            }
+            if (!target) return;
+
+            Vector3 movementDirection = new Vector3(target.position.x, 0f, target.position.z);
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up * 3f);
+            rb.rotation = Quaternion.RotateTowards(rb.rotation, toRotation, _rotationSpeed * Time.deltaTime);
         }
     }
 }
