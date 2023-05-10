@@ -21,7 +21,7 @@ namespace GridRunner.Runner.CutModule.Controllers
             //Create Movement Cube and Calculations
             var movementStackCube = GetObject(PoolType.MovementStackCube);
             movementStackCube.transform.localScale = _stackCubes[_stackCubes.Count - 1].transform.localScale;
-            var objMat = movementStackCube.GetComponentInChildren<MeshRenderer>().material;
+            var objMat = movementStackCube.GetComponentInChildren<MeshRenderer>();
             float objScaleZ = movementStackCube.transform.localScale.z;
             float lastObjPosZ = _stackCubes[_stackCubes.Count - 1].transform.position.z;
             _stackCubeOffsetZ = lastObjPosZ + objScaleZ;
@@ -29,7 +29,7 @@ namespace GridRunner.Runner.CutModule.Controllers
             if (_colorCount >= _stackCubeData.CubeColors.Count)
                 _colorCount = 0;
 
-            objMat = _stackCubeData.CubeColors[_colorCount];
+            objMat.material = _stackCubeData.CubeColors[_colorCount];
 
             if (stackCubeSpawnerManager.Count % 2 == 0)
                 movementStackCube.transform.position = new Vector3(_stackCubeData.SpawnDotsX.x, movementStackCube.transform.position.y, _stackCubeOffsetZ);

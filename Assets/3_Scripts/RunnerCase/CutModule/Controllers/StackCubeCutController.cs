@@ -6,7 +6,7 @@ using GridRunner.PoolModule.Interfaces;
 using GridRunner.PoolModule.Enums;
 using GridRunner.AudioModule.Signals;
 using GridRunner.AudioModule.Enums;
-//using DG.Tweening;
+using DG.Tweening;
 
 namespace GridRunner.Runner.CutModule.Controllers
 {
@@ -76,9 +76,9 @@ namespace GridRunner.Runner.CutModule.Controllers
                 _stackCubes[_stackCubes.Count - 1].transform.position.y,
                 _stackCubes[_stackCubes.Count - 1].transform.position.z);
 
-            cuttedObj.GetComponentInChildren<MeshRenderer>().material.color = _stackCubes[_stackCubes.Count - 1].GetComponentInChildren<MeshRenderer>().material.color;
+            cuttedObj.GetComponentInChildren<MeshRenderer>().material = _stackCubes[_stackCubes.Count - 1].GetComponentInChildren<MeshRenderer>().material;
             var dir = new Vector3(0, 0, direction * 360);
-            //cuttedObj.transform.DORotate(dir, 1f, RotateMode.LocalAxisAdd);
+            cuttedObj.transform.DORotate(dir, 1f, RotateMode.LocalAxisAdd);
         }
 
         public GameObject GetObject(PoolType poolType)

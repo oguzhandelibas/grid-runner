@@ -6,12 +6,13 @@ using GridRunner.Runner.UIModules.Signals;
 using GridRunner.Runner.LevelModule.Signals;
 using System.Collections.Generic;
 using TMPro;
-//using DG.Tweening;
+using DG.Tweening;
 
 namespace GridRunner.UIModules.Managers
 {
     public class UIManager : MonoBehaviour
     {
+        [Header("Runner Game UI Manager")]
         #region Self Variables
 
         #region Serialized Variables
@@ -122,7 +123,7 @@ namespace GridRunner.UIModules.Managers
         private void OnLevelFailed()
         {
             _uiPanelController.CloseAllPanel();
-            //DOVirtual.DelayedCall(1f, () => _uiPanelController.OpenPanel(PanelTypes.FailedPanel));
+            DOVirtual.DelayedCall(1f, () => _uiPanelController.OpenPanel(PanelTypes.FailedPanel));
         }
 
         private void OnLevelSuccessful()
@@ -137,24 +138,7 @@ namespace GridRunner.UIModules.Managers
             _levelPanelController.SetLevelText(LevelSignals.Instance.onGetLevelForText.Invoke() + 1);
         }
 
-        public void PlayButton()
-        {
-            CoreGameSignals.Instance.onPlay?.Invoke();
-        }
 
-        public void NextLevelButton()
-        {
-            LevelSignals.Instance.onNextLevel?.Invoke();
-            _levelPanelController.SetLevelText(LevelSignals.Instance.onGetLevelForText.Invoke() + 1);
-        }
-
-        public void RestartButton()
-        {
-            _uiPanelController.CloseAllPanel();
-            _uiPanelController.OpenPanel(PanelTypes.LevelPanel);
-            LevelSignals.Instance.onRestartLevel?.Invoke();
-            CoreGameSignals.Instance.onPlay?.Invoke();
-        }
 
         private void OnUpdateGemScore(int gemValue)
         {
@@ -170,5 +154,28 @@ namespace GridRunner.UIModules.Managers
         {
             _levelPanelController.SetStarScoreText(moneyValue);
         }
+
+        #region UI Buttons
+        public void _PlayButton()
+        {
+            _uiPanelController.CloseAllPanel();
+            _uiPanelController.OpenPanel(PanelTypes.LevelPanel);
+            CoreGameSignals.Instance.onPlay?.Invoke();
+        }
+
+        public void _NextLevelButton()
+        {
+            LevelSignals.Instance.onNextLevel?.Invoke();
+            _levelPanelController.SetLevelText(LevelSignals.Instance.onGetLevelForText.Invoke() + 1);
+        }
+
+        public void _RestartButton()
+        {
+            _uiPanelController.CloseAllPanel();
+            _uiPanelController.OpenPanel(PanelTypes.LevelPanel);
+            LevelSignals.Instance.onRestartLevel?.Invoke();
+            CoreGameSignals.Instance.onPlay?.Invoke();
+        }
+        #endregion
     }
 }

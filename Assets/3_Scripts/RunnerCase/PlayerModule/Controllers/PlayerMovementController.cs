@@ -30,6 +30,7 @@ namespace GridRunner.Runner.Commands
         {
             if (_readyToMove)
             {
+
                 var posX = target.position.x - rigidbody.position.x;
                 direction = posX < 0 ? -1f : 1f;
                 if (Mathf.Abs(posX) >= 0.05f)

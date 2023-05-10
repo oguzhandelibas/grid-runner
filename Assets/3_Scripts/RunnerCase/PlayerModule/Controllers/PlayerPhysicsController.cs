@@ -37,7 +37,7 @@ namespace GridRunner.Runner.Controllers
                 LevelSignals.Instance.onLevelFailed?.Invoke();
                 playerManager.StopMovement();
             }
-            if (other.CompareTag("Finish"))
+            if (other.CompareTag("FinishLine"))
             {
                 LevelSignals.Instance.onLevelSuccessful?.Invoke();
                 playerManager.StopMovement();

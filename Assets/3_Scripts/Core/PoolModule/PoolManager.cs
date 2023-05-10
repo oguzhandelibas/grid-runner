@@ -13,7 +13,7 @@ namespace GridRunner.PoolModule
         #region Self Variables
 
         #region Private Variables
-        private CD_Pool _data;
+        [SerializeField] private CD_Pool _data;
         private int _listCountCache;
         private ObjectPoolExtention _extention;
         #endregion
@@ -23,7 +23,7 @@ namespace GridRunner.PoolModule
         private void Awake()
         {
             _extention = new ObjectPoolExtention();
-            _data = GetData();
+            //_data = GetData();
             InitializePools();
         }
 

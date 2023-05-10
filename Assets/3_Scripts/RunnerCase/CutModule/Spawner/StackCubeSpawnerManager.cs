@@ -1,3 +1,4 @@
+using System.Xml;
 using UnityEngine;
 using GridRunner.PoolModule.Interfaces;
 using GridRunner.PoolModule.Signals;
@@ -96,6 +97,7 @@ namespace GridRunner.Runner.CutModule
         {
             if (_isFailed)
                 return;
+
             if (_stackCubes.Count > 1)
             {
                 _stackCubes[_stackCubes.Count - 1].transform.localScale = _stackCubes[_stackCubes.Count - 2].transform.localScale;
@@ -135,6 +137,7 @@ namespace GridRunner.Runner.CutModule
             _isFailed = false;
             _stackCubeOffsetZ = 0;
         }
+
         private void OnRestart()
         {
             OnClick();

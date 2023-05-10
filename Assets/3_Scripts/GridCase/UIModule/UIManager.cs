@@ -12,8 +12,10 @@ using GridRunner.Grid.GridModule.Signals;
 
 namespace GridRunner.Grid.UIModule
 {
+
     public class UIManager : MonoBehaviour
     {
+        [Header("Grid Game UI Manager")]
         #region Self Variables
 
         #region Serialized Variables
