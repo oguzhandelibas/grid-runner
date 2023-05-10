@@ -97,31 +97,45 @@ namespace GridRunner.Runner.CutModule
 
         private void OnClick()
         {
-            if (_isFailed)
-                return;
+            if (_isFailed) return;
 
-            if (_stackCubes.Count > 1)
-            {
-                _stackCubes[_stackCubes.Count - 1].transform.localScale = _stackCubes[_stackCubes.Count - 2].transform.localScale;
-                stackCubeCutController.CutObject(_stackCubes);
-            }
+            var lastCube = _stackCubes.Count > 1 ? _stackCubes[_stackCubes.Count - 1] : null;
+            var firstCube = _stackCubes[0];
+            var lastCubeRenderer = lastCube?.GetComponentInChildren<MeshRenderer>();
+
             if (Count >= _maxCubeCount)
             {
                 if (finishObject.activeInHierarchy)
                     calculateFinishCommand.GetFinishObject(_stackCubes);
                 return;
             }
+
+            if (lastCube != null)
+            {
+                lastCube.transform.localScale = lastCube.transform.localScale;
+                stackCubeCutController.CutObject(_stackCubes);
+            }
+
             stackCubeOnClickController.Click(_stackCubes, _stackCubeOffsetZ, _maxCubeCount, _stackCubeData);
         }
+
         private void OnLevelFailed() => _isFailed = true;
+
         private void OnLevelSuccessful()
         {
-            _stackCubes[0].transform.position = new Vector3(_stackCubes[0].transform.position.x,
-                _stackCubes[0].transform.position.y,
-                finishObject.transform.position.z + ((finishObject.transform.localScale.z + _stackCubes[0].transform.localScale.z) / 2));
+            if (_stackCubes.Count == 0) return;
 
-            _stackCubes[0].GetComponentInChildren<MeshRenderer>().material.color = _stackCubes[_stackCubes.Count - 1].GetComponentInChildren<MeshRenderer>().material.color;
+            var firstCube = _stackCubes[0];
+            var lastCubeRenderer = _stackCubes[_stackCubes.Count - 1].GetComponentInChildren<MeshRenderer>();
+
+            firstCube.transform.position = new Vector3(firstCube.transform.position.x,
+                                                        firstCube.transform.position.y,
+                                                        finishObject.transform.position.z + ((finishObject.transform.localScale.z + firstCube.transform.localScale.z) / 2));
+
+            firstCube.GetComponentInChildren<MeshRenderer>().material.color = lastCubeRenderer.material.color;
         }
+
+
 
         #region Reset and Restart Jobs
         private void ResetSpawner()
@@ -131,13 +145,11 @@ namespace GridRunner.Runner.CutModule
                 ReleaseObject(_stackCubes[i], PoolType.MovementStackCube);
             }
 
-            var obj = _stackCubes[0];
-            _stackCubes.Clear();
-            _stackCubes.TrimExcess();
-            _stackCubes.Add(obj);
-
             _isFailed = false;
             _stackCubeOffsetZ = 0;
+            var obj = _stackCubes[0];
+            _stackCubes.Clear();
+            _stackCubes.Add(obj);
         }
 
         private void OnRestart()
