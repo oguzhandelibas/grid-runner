@@ -70,39 +70,35 @@ namespace GridRunner.Grid.GridModule
         {
             if (gridInputSize <= 0)
                 return;
-            if (this.transform.childCount > 0)
-                ReleaseAllGridObject(this.transform, PoolType.GridObject);
+            if (transform.childCount > 0)
+                ReleaseAllGridObject(transform, PoolType.GridObject);
 
+            var gridCount = gridInputSize * gridInputSize;
             _gridArray = new GridSquareBackground[gridInputSize, gridInputSize];
             GridData.GridSize = gridInputSize;
 
-            var gridCount = GridData.GridSize * GridData.GridSize;
+            var gridOffsetsMax = Mathf.Max(GridData.GridOffsets.x, GridData.GridOffsets.y);
+            _camera.orthographicSize = gridInputSize * gridOffsetsMax;
 
-            gridPivotCalculate = CheckPivotPosition(gridCount);
+            gridPivotTarget.localPosition = new Vector3(
+                -CheckPivotPosition(gridInputSize) * GridData.GridOffsets.x,
+                gridPivotTarget.localPosition.y,
+                -CheckPivotPosition(gridInputSize) * GridData.GridOffsets.y);
 
-            var cameraCross = GridData.GridOffsets.x > GridData.GridOffsets.y ? GridData.GridOffsets.x : GridData.GridOffsets.y;
-            _camera.orthographicSize = GridData.GridSize * cameraCross;
+            var position = gridPivotTarget.position;
 
-            gridPivotTarget.transform.localPosition = new Vector3(-gridPivotCalculate * GridData.GridOffsets.x, gridPivotTarget.transform.localPosition.y, -gridPivotCalculate * GridData.GridOffsets.y);
             for (int i = 0; i < gridCount; i++)
             {
-                var modX = (int)(i % GridData.GridSize);
-                var divideZ = (int)(i / GridData.GridSize);
-                var modZ = (int)(divideZ % GridData.GridSize);
+                var modX = i % gridInputSize;
+                var modZ = i / gridInputSize % gridInputSize;
+                var objPosition = new Vector3(modX * GridData.GridOffsets.x + position.x, position.y, modZ * GridData.GridOffsets.y + position.z);
 
-                var position = gridPivotTarget.position;
-                _gridPositions = new Vector3(modX * GridData.GridOffsets.x + position.x, position.y,
-                    modZ * GridData.GridOffsets.y + position.z);
-
-                if (gridInputSize == 15) Debug.Log("ModX, DivideZ: " + modX + " ve " + divideZ);
                 var obj = GetObject(PoolType.GridObject);
-
-                obj.transform.SetParent(this.transform);
-                obj.transform.position = _gridPositions;
+                obj.transform.SetParent(transform);
+                obj.transform.position = objPosition;
 
                 var objComponent = obj.GetComponent<GridSquareBackground>();
                 _gridArray[modX, modZ] = objComponent;
-
             }
 
             FoundAllNeighbors(gridCount);
@@ -113,15 +109,11 @@ namespace GridRunner.Grid.GridModule
             for (int i = 0; i < gridCount; i++)
             {
                 var modX = (int)i % GridData.GridSize;
-
                 var divideZ = (i / GridData.GridSize);
-
-                //Debug.Log("ModX, DivideZ: " + modX + " ve " + divideZ);
                 var currentGrid = _gridArray[modX, divideZ];
 
-                for (int j = 0; j < neighborsPattern.Length; j++)
+                foreach (var neighborPattern in neighborsPattern)
                 {
-                    var neighborPattern = neighborsPattern[j];
                     var neighborXIndex = modX + neighborPattern.x;
                     var neighborZIndex = divideZ + neighborPattern.y;
                     if (CheckEdges(neighborXIndex, neighborZIndex)) continue;
@@ -129,24 +121,23 @@ namespace GridRunner.Grid.GridModule
                 }
             }
         }
+
         private bool CheckEdges(float neighborX, float neighborZ)
         {
-            if (neighborX >= GridData.GridSize || neighborX < 0 || neighborZ >= GridData.GridSize || neighborZ < 0)
-                return true;
-            return false;
+            return (neighborX >= GridData.GridSize || neighborX < 0 || neighborZ >= GridData.GridSize || neighborZ < 0);
         }
+
         private float CheckPivotPosition(int gridSize)
         {
-            if (GridData.GridSize % 2 == 0)
-                return GridData.GridSize / 2 - 0.5f;
-            return GridData.GridSize / 2;
+            return (gridSize - 1) * 0.5f;
         }
 
         private void ReleaseAllGridObject(Transform transformParent, PoolType poolType)
         {
-            var count = transformParent.childCount;
-            for (var i = count - 1; i >= 0; i--)
+            for (int i = transformParent.childCount - 1; i >= 0; i--)
+            {
                 ReleaseObject(transformParent.GetChild(i).gameObject, poolType);
+            }
         }
 
         public GameObject GetObject(PoolType poolType)
