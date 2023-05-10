@@ -7,6 +7,7 @@ using GridRunner.Runner.LevelModule.Signals;
 using System.Collections.Generic;
 using TMPro;
 using DG.Tweening;
+using GridRunner.InputModule.Signals;
 
 namespace GridRunner.UIModules.Managers
 {
@@ -160,6 +161,7 @@ namespace GridRunner.UIModules.Managers
         {
             _uiPanelController.CloseAllPanel();
             _uiPanelController.OpenPanel(PanelTypes.LevelPanel);
+            InputSignals.Instance.onClick?.Invoke();
             CoreGameSignals.Instance.onPlay?.Invoke();
         }
 
