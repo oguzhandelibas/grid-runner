@@ -4,7 +4,6 @@ using GridRunner.PoolModule.Enums;
 using GridRunner.Grid.GridModule.Signals;
 using GridRunner.InputModule.Signals;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace GridRunner.Grid.GridModule
 {
@@ -78,7 +77,7 @@ namespace GridRunner.Grid.GridModule
             GridData.GridSize = gridInputSize;
 
             var gridOffsetsMax = Mathf.Max(GridData.GridOffsets.x, GridData.GridOffsets.y);
-            _camera.orthographicSize = gridInputSize * gridOffsetsMax;
+            _camera.orthographicSize = (gridInputSize * gridOffsetsMax) + 1;
 
             gridPivotTarget.localPosition = new Vector3(
                 -CheckPivotPosition(gridInputSize) * GridData.GridOffsets.x,
