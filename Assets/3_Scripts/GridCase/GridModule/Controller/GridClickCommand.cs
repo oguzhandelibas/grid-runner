@@ -7,6 +7,7 @@ using GridRunner.Grid.CoreGameModule.Signals;
 
 using UnityEngine;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class GridClickCommand : IGetPoolObject, IReleasePoolObject
 {
@@ -92,10 +93,16 @@ public class GridClickCommand : IGetPoolObject, IReleasePoolObject
         for (var i = _neighbors.Count - 1; i >= 0; i--)
         {
             _neighbors[i].AvaibleType = AvaibleType.Unlock;
-            _neighbors[i].guru.SetActive(false);
+            _neighbors[i].guru.transform.DOShakePosition(0.5f, .1f, 10, 90);
+            GuruActiveness(_neighbors[i]);
         }
 
         _neighbors.Clear();
+    }
+
+    private void GuruActiveness(GridSquareBackground neighbor)
+    {
+        DOVirtual.DelayedCall(0.5f, () => { neighbor.guru.SetActive(false); });
     }
 
     private void ShowClickParticles(GridSquareBackground gridSquareBackground)
