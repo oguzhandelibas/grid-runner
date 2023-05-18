@@ -8,8 +8,6 @@ Hello, two different mechanics have been tested within this project.
 
 I would be very happy if you could examine my work and give me positive or negative feedback.
 
-You can watch the output of the project at this link:
-https://streamable.com/cg7swa
 
 Moreover you can reach me by following this link:
 https://linktr.ee/oguzhandelibas
